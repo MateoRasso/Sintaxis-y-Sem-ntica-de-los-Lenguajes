@@ -1,8 +1,16 @@
 #include <stdio.h>
 
-int main(){
+int main(void){
 
-    printf("Hello world!");
+    FILE *punteroAlArchivo;
+
+    punteroAlArchivo = fopen("output.txt", "w");
+
+    fprintf(punteroAlArchivo, "%s", "Hello World!");
+
+    printf("Hello World\n");
+
+    fclose(punteroAlArchivo);
 
     return 0;
 }
