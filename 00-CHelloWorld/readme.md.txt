@@ -1,2 +1,0 @@
-- Compilador: MinGW64
-- IDE : Visual Studio Code
