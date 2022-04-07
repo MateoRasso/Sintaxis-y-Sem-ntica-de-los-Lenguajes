@@ -1,5 +1,5 @@
 # 00-CHelloWorld
----------------------------------------------
+
 - Compilador utilizado: MinGW64 (instalado con el programa MSYS2 MinGW x64)
 - IDE : Visual Studio Code
 - Version estándar de C: c17
