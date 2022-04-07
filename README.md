@@ -1,7 +1,7 @@
 # Sintaxis y Semantica de los Lenguajes
 
-- K2051
-- 2022
-- 169.138-7
-- Rasso
-- Mateo
+- Curso: K2051
+- Año: 2022
+- Legajo: 169.138-7
+- Apellido: Rasso
+- Nombre: Mateo
