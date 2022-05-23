@@ -8,7 +8,7 @@ int main(void){
 
     fprintf(punteroAlArchivo, "%s", "Hello World!");
 
-    printf("Hello World\n");
+    printf("Hello World!\n");
 
     fclose(punteroAlArchivo);
 
