@@ -20,7 +20,7 @@ ConversionTest: ConversionTest.o Conversion.o
 	gcc ConversionTest.o Conversion.o -o ConversionTest
 
 clean:
-	rm TablasDeConversion.o
+	del TablasDeConversion.o
 	del Conversion.o
 	del TablasDeConversion.exe
 	del ConversionTest.o
