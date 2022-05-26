@@ -1,18 +1,14 @@
 #include <stdio.h>
-#include "Conversion.h"
+#include "Conversion.h" // Conversion.c exporta a la Interfaz Conversion.h
 
 
-float celsius(float farenheitDegrees){ // Convierte a grados Celsius
-
-    float celsiusDegrees;
+float celsius(int gradosFahrenheit){ // Convierte a grados Celsius
         
-    return celsiusDegrees = (farenheitDegrees - 32.0) * (5.0/9.0);
+    return ((gradosFahrenheit - 32.0) * (5.0/9.0)); // Antes de realizar la resta los gradosFahrenheit son convertidos de int a float
 }
 
-float farenheit(float celsiusDegrees){ // Convierte a grados Farenheit
-
-    float farenheitDegrees;
+float fahrenheit(int gradosCelsius){ // Convierte a grados Fahrenheit
         
-    return farenheitDegrees = (celsiusDegrees * (9.0/5.0)) + 32.0;
+    return ((gradosCelsius * (9.0/5.0)) + 32.0); // Antes de realizar la resta los gradosCelsius son convertidos de int a float
 }
 
