@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-float celsius(int); // Convierte a grados Celsius
+double celsius(double); // Convierte a grados Celsius
 
-float fahrenheit(int); // Convierte a grados Fahrenheit
+double fahrenheit(double); // Convierte a grados Fahrenheit
 
 

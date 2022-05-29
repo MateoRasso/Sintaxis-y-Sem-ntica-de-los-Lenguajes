@@ -33,8 +33,8 @@ void printTablaCelsius(const int limiteInferior, const int limiteSuperior, const
 
     printf("\nFahrenheit a Celsius \n");
 
-    for(int grados = limiteInferior; grados < limiteSuperior; grados += incremento){
-        printf("%d F -> %f C \n", grados, celsius(grados)); 
+    for(double gradosFahrenheit = limiteInferior; gradosFahrenheit <= limiteSuperior; gradosFahrenheit += incremento){
+        printf("%f F -> %f C \n", gradosFahrenheit, celsius(gradosFahrenheit)); 
     }
 
     return;
@@ -44,8 +44,8 @@ void printTablaFahrenheit(const int limiteInferior, const int limiteSuperior, co
 
     printf("\nCelsius a Fahrenheit \n");
     
-    for(int grados = limiteInferior; grados < limiteSuperior; grados += incremento){
-        printf("%d C -> %.0f F \n", grados, fahrenheit(grados)); // Suprimo la impresion del punto decimal y de las cifras decimales ya que en este caso los resultados son numeros naturales.
+    for(double gradosCelsius = limiteInferior; gradosCelsius <= limiteSuperior; gradosCelsius += incremento){
+        printf("%f C -> %f F \n", gradosCelsius, fahrenheit(gradosCelsius)); 
     }
 
     return;

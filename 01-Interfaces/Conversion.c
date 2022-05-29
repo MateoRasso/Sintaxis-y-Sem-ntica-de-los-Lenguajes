@@ -2,13 +2,13 @@
 #include "Conversion.h" // Conversion.c exporta a la Interfaz Conversion.h
 
 
-float celsius(int gradosFahrenheit){ // Convierte a grados Celsius
+double celsius(double gradosFahrenheit){ // Convierte a grados Celsius
         
-    return ((gradosFahrenheit - 32.0) * (5.0/9.0)); // Antes de realizar la resta los gradosFahrenheit son convertidos de int a float
+    return ((gradosFahrenheit - 32.0) * (5.0/9.0)); // Si gradosFahrenheit es int, es convertido a double antes de realizar la operacion.
 }
 
-float fahrenheit(int gradosCelsius){ // Convierte a grados Fahrenheit
+double fahrenheit(double gradosCelsius){ // Convierte a grados Fahrenheit
         
-    return ((gradosCelsius * (9.0/5.0)) + 32.0); // Antes de realizar la resta los gradosCelsius son convertidos de int a float
+    return ((gradosCelsius * (9.0/5.0)) + 32.0); // Si gradosCelsius es int, es convertido a double antes de realizar la operacion.
 }
 

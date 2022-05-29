@@ -4,17 +4,23 @@
 
 int main(void){
 
-    const int gradosFahrenheit = 50, gradosCelsius = 150;
+    const int limiteInferior =  0, limiteSuperiror = 300, incremento = 20;
 
-    const float resultadoCelsius = ((gradosFahrenheit - 32.0) * (5.0/9.0)), resultadoFahrenheit = ( (gradosCelsius * (9.0/5.0)) + 32.0);
-    
-    // Usando las formulas, le asigno a dos constantes los resultados de convertir 50 F a Celsius y 150 C a Fahrenheit para verificar que coinciden con los resultados de mis funciones fahrenheit y celsius.
+    for(double gradosFahrenheit = limiteInferior; gradosFahrenheit <= limiteSuperiror; gradosFahrenheit += incremento){
 
-    assert(celsius(gradosFahrenheit) == resultadoCelsius); // 50 F = 10 C
+        //printf("Fahrenheit: %f \t Fahrenheit convertido a Celsius y convertido a Fahrenheit de nuevo: %f \n", gradosFahrenheit, fahrenheit(celsius(gradosFahrenheit)));
+        
+        assert(gradosFahrenheit == fahrenheit(celsius(gradosFahrenheit))); // Verifico que la salida de la funcion "fahrenheit" coincida con el argumento que le paso a la funcion "celsius".
+        // Este assert falla porque: 0° F es distinto de fahrenheit(celsius(0° F))   
+    }
 
-    assert(fahrenheit(gradosCelsius) == resultadoFahrenheit); // 150 C = 302 F
+    for(double gradosCelsius = limiteInferior; gradosCelsius <= limiteSuperiror; gradosCelsius += incremento){
 
-    // Si al ejecutar ConversionTest.c no se imprime nada por consola, los test pasaron.
+        //printf("Celsius: %f \t Celsius convertido a Fahrenheit y convertido a Celsius de nuevo: %f \n", gradosCelsius, fahrenheit(celsius(gradosCelsius)));
+
+        assert(gradosCelsius == celsius(fahrenheit(gradosCelsius))); // Verifico que la salida de la funcion "celsius" coincida con el argumento que le paso a la funcion "fahrenheit".
+        // Este assert tambien deberia fallar como el de la linea 13, ya que 0° C es distinto de celsius(fahrenheit(0° C)) , pero por algun motivo no falla.
+    }
 
     return 0;
 }
