@@ -25,7 +25,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     d. Investigar e indicar la semántica de la primera línea.
 
-    La primera linea de hello3.c es la declaracion de la funcion _printf_. La funcion _printf_ puede recibir un argumento como mínimo o más de uno. La palabra reservada *int* indica que la funcion _printf_ devuelve un entero, que es la cantidad de caracteres impresos por la función, o tambíén puede devolver un entero negativo en caso de que se haya producido un error. *s* es un puntero a una constante caracter, es una cadena que contiene caracteres comunes, que seran impresos al flujo de salida (en este caso stdout) y especificadores de conversión. La palabra reservada _restrict_  se usa para indicarle al compilador que no hay otro puntero que apunte al objeto apuntado por _s_.
+    La primera linea de hello3.c es la declaracion de la funcion _printf_. La funcion _printf_ puede recibir un argumento como mínimo o más de uno. La palabra reservada **int** indica que la funcion _printf_ devuelve un entero, que es la cantidad de caracteres impresos por la función, o tambíén puede devolver un entero negativo en caso de que se haya producido un error. _s_ es un puntero a una constante caracter, es una cadena que contiene caracteres comunes, que seran impresos al flujo de salida (en este caso stdout) y especificadores de conversión. La palabra reservada _restrict_  se usa para indicarle al compilador que no hay otro puntero que apunte al objeto apuntado por _s_.
 
     e. Preprocesar hello3.c, no compilar, y generar hello3.i. Buscar diferencias entre hello3.c y hello3.i.
 
