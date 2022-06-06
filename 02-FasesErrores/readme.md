@@ -47,7 +47,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * gcc -S hello3.c -o hello3.s
 
-    Al compilar hello3.i sin ensamblar el compilador indica que hay un error sintáctico en el codigo y un warning por la llamada a _printf_
+    Al compilar hello3.i sin ensamblar el compilador indica que hay un error sintáctico en el codigo, por la falta de una llave, y un warning por la llamada a _prontf_ que no está declarada. 
 
     b. Corregir solo los errores, no los warnings, en el nuevo archivo hello4.c y empezar de nuevo, generar hello4.s, no ensamblar.
 
@@ -59,7 +59,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     c. Leer hello4.s, investigar sobre el lenguaje ensamblador, e indicar de forma sintética cual es el objetivo de ese código.
 
-    El compilador da como salida al archivo hello4.s escrito en lenguaje ensamblador. Las instrucciones escritas en el archivo fuente hello4.c deben ser traducidas a un lenguaje que entienda la computadora, C es un lenguaje de alto nivel diseñado pára ser comprendido por los humanos, y tiene un nivel de abstracción más alto que el codigo escrito en lenjuaje assembler. Por esto muchas de las instrucciones escritas en C son traducidas a más de una instrucción en assembler, es decir la traduccion no es de uno a uno.
+    El compilador da como salida al archivo hello4.s escrito en lenguaje ensamblador. Las instrucciones escritas en el archivo fuente hello4.c deben ser traducidas a un lenguaje que entienda la computadora, C es un lenguaje de alto nivel diseñado pára ser comprendido por los humanos, y tiene un nivel de abstracción más alto que el codigo escrito en lenjuaje assembler. Por esto muchas de las instrucciones escritas en C son traducidas a más de una instrucción en assembler, es decir la traduccion no es de uno a uno. Aún asi la computadora no entiende las instrucciones en lenguaje ensablador, por lo que es necesario traducir las mismas a código de máquina, que sí es comprendido por la computadora. La traducción del codigo assembler a código de máquina es casi una traducción de uno a uno. 
 
     d. Ensamblar hello4.s en hello4.o, no vincular.
 
