@@ -17,7 +17,9 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     b. Preprocesar hello2.c, no compilar, y generar hello2.i. Analizar su
     contenido. ¿Qué conclusiones saca?
 
-    Comando: gcc -E hello2.c -o hello2.i
+    Comando: 
+    
+    * gcc -E hello2.c -o hello2.i
 
     El archivo fuente hello2.c solo es preprocesado, se elimina el comentario en el codigo y  se lo reemplaza por un espacio. La linea _#include <stdio.h>_ es reemplazada por el contenido del archivo encabezado stdio.h . Esto se realiza para poder acceder a las declaraciones de las funciones de la biblioteca estandar. 
 
@@ -29,7 +31,9 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     e. Preprocesar hello3.c, no compilar, y generar hello3.i. Buscar diferencias entre hello3.c y hello3.i.
 
-    Comando: gcc -E hello3.c -o hello3.i
+    Comando: 
+    
+    * gcc -E hello3.c -o hello3.i
 
     Se mantiene el mismo contenido del archivo hello3.c, solo se agregan cuatro lineas y no el contenido de un archivo encabezado ya que no hay ninguna directiva _#include_  para el preprocesador en el archivo hello3.c
 
@@ -43,7 +47,9 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     b. Corregir solo los errores, no los warnings, en el nuevo archivo hello4.c y empezar de nuevo, generar hello4.s, no ensamblar.
 
-    Comando: gcc -S hello4.c -o hello4.s
+    Comando: 
+    
+    * gcc -S hello4.c -o hello4.s
 
     Al corregir los errores en el archivo hello4.c el compilador realiza un análisis léxico sintáctico y semántico, al no encontrar errores genera como salida hello4.s . 
 
@@ -53,7 +59,9 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     d. Ensamblar hello4.s en hello4.o, no vincular.
 
-    Comando: gcc -c hello4.s -o hello4.o 
+    Comando: 
+    
+    * gcc -c hello4.s -o hello4.o 
 
     Al ensamblar hello4.s obtenemos como producto un archivo en código objeto.
 
@@ -61,7 +69,9 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     a. Vincular hello4.o con la biblioteca estándar y generar el ejecutable.
 
-    Comando: gcc hello4.o 
+    Comando: 
+    
+    * gcc hello4.o 
 
     En la consola se muestra el siguiente error ya que _prontf_  produce un error de vinculación.
 
@@ -70,14 +80,19 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     b. Corregir en hello5.c y generar el ejecutable. Solo corregir lo necesario para que vincule.
 
-    Comandos: gcc -c hello5.c -o hello5.o
-              gcc hello5.o
+    Comandos: 
+    
+    * gcc -c hello5.c -o hello5.o
+    
+    * gcc hello5.o
 
     Al corregir _prontf_ en hello5.c volvemos a generar el archivo objeto y luego a partir de este archivo y sin errores de vinculacion, generamos el ejecutable hello5.exe .
 
     c. Ejecutar y analizar el resultado
 
-    Comando: hello5.exe
+    Comando: 
+    
+    * hello5.exe
 
     Al ejecutar el programa se obtiene por pantalla **'La respuesta es 4200688'** . En el caso de hello5.c la cadena _s_ de _printf_ contiene caracteres ordinarios que son impresos a la salida estandar (**La respuesta es**) y el especificador de conversion _%d_ . Al imprimir por la salida estandar esta cadena, se produce un problema ya que el uso de _%d_ en _printf_ indica que se va a imprimir un entero, pero en _printf_ falta un argumento, es decir, falta agregar la variable _i_ como segundo argumento de _printf_ para que el numero **42** se muestre por pantalla correctamente.
 
@@ -85,8 +100,11 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     a. Corregir en hello6.c y empezar de nuevo; verificar que funciona como se espera.
 
-    Comandos: gcc hello6.c -o hello6
-              hello6.exe
+    Comandos: 
+    
+    * gcc hello6.c -o hello6
+    
+    * hello6.exe
 
     Luego de realizar la corrección correspondiente en hello6.c, compilamos y ejecutamos el programa y obtenemos por pantalla la salida correcta **'La respuesta es 42'** .
 
@@ -96,8 +114,11 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     b. Explicar porqué funciona.
 
-    Comandos: gcc hello7.c -o hello7 
-              hello7.exe 
+    Comandos: 
+    
+    * gcc hello7.c -o hello7 
+    
+    * hello7.exe 
 
     Al ejecutar los comandos el programa es compilado y ejecutado con un warning pero sin errores. Funciona ya que la función es declarada implicitamente, esto quiere decir que como _printf_ no esta declarada, el compilador "asume" que el tipo de dato que retorna la funcion _printf_ es un **int**. El compilador no asume nada respecto a los parámetros y sus tipos de dato de una funcion no declarada. En el caso de hello7.c la compilacion no falla porque _printf_ devuelve un **int**, pero en el caso de alguna función distinta que no devuelva un **int** la compilación fallaría, se produciría un error.
 
