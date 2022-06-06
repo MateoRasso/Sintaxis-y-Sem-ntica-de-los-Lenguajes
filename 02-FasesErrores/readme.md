@@ -37,11 +37,15 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     Se mantiene el mismo contenido del archivo hello3.c, solo se agregan cuatro lineas y no el contenido de un archivo encabezado ya que no hay ninguna directiva _#include_  para el preprocesador en el archivo hello3.c
 
+    ----------------------------------------------------------------------------------------------------------------------------
+
 2. Compilación
 
     a. Compilar el resultado y generar hello3.s, no ensamblar.
 
-    Comando: gcc -S hello3.c -o hello3.s
+    Comando: 
+    
+    * gcc -S hello3.c -o hello3.s
 
     Al compilar hello3.i sin ensamblar el compilador indica que hay un error sintáctico en el codigo y un warning por la llamada a _printf_
 
@@ -64,6 +68,8 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     * gcc -c hello4.s -o hello4.o 
 
     Al ensamblar hello4.s obtenemos como producto un archivo en código objeto.
+
+    ----------------------------------------------------------------------------------------------------------------------------
 
 3. Vinculación
 
@@ -96,6 +102,8 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     Al ejecutar el programa se obtiene por pantalla **'La respuesta es 4200688'** . En el caso de hello5.c la cadena _s_ de _printf_ contiene caracteres ordinarios que son impresos a la salida estandar (**La respuesta es**) y el especificador de conversion _%d_ . Al imprimir por la salida estandar esta cadena, se produce un problema ya que el uso de _%d_ en _printf_ indica que se va a imprimir un entero, pero en _printf_ falta un argumento, es decir, falta agregar la variable _i_ como segundo argumento de _printf_ para que el numero **42** se muestre por pantalla correctamente.
 
+    ----------------------------------------------------------------------------------------------------------------------------
+
 4. Corrección del bug
 
     a. Corregir en hello6.c y empezar de nuevo; verificar que funciona como se espera.
@@ -107,6 +115,8 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     * hello6.exe
 
     Luego de realizar la corrección correspondiente en hello6.c, compilamos y ejecutamos el programa y obtenemos por pantalla la salida correcta **'La respuesta es 42'** .
+
+    ----------------------------------------------------------------------------------------------------------------------------
 
 5. Remoción del prototipo
 
