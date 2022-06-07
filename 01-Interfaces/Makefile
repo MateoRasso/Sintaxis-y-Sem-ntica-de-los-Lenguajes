@@ -29,7 +29,7 @@ CFLAGS = -std=c18
 # ---------- Reglas para TablasDeConversion -------------------
 
 start: $(BIN)
-	$(BIN)
+	.\$(BIN)
 
 $(BIN): $(OBJ)
 	$(CC) $(OBJ) -o $(BIN) $(CFLAGS)
@@ -45,7 +45,7 @@ TablasDeConversion.o: TablasDeConversion.c $(HEADER_FILE)
 # ----------- Reglas para ConversionTest --------------------------
 
 test: $(BIN_TEST)
-	$(BIN_TEST)
+	.\$(BIN_TEST)
 
 $(BIN_TEST): $(OBJ_TEST)
 	$(CC) $(OBJ_TEST) -o $(BIN_TEST) $(CFLAGS)
