@@ -168,6 +168,8 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     Funciona ya que la función es declarada implicitamente, esto quiere decir que como _printf_ no esta declarada, el compilador (gcc) "asume" que el tipo de dato que retorna la funcion _printf_ es un **int**. El compilador no asume nada respecto a los parámetros y sus tipos de dato, de una funcion no declarada. En el caso de hello7.c la compilacion no falla porque _printf_ devuelve un **int**, pero en el caso de alguna función distinta que no devuelva un **int** la compilación fallaría, se produciría un error.
 
+    **Nota**: No todos los compiladores permiten las declaraciones implícitas de funciones, es decir, no todos los compiladores pueden generar código ejecutable sin la declaración de funciones.  Como se mencionó **gcc** lo permite, pero en el caso de otro compilador como **clang**, no se permite generar código ejecutable sin declaración de funciones.  
+
 
     Como ejemplo se incluye en la carpeta 03-FasesErrores el archivo devuelveFloat.c en el que se llama desde _main_ a una funcion que devuelve un valor de tipo de dato float. La funcion no esta declarada, solo esta definida abajo de _main_ . Cuando se ejecuta el comando **gcc devuelveFloat.c -o devuelveFloat** obtenemos el warning correspondiente a la declaración implícita y un error, este último no se obtiene para el caso de hello7.c .
 
