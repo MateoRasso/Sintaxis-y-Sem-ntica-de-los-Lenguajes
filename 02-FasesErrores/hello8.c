@@ -1,6 +1,6 @@
 int main(void){
 int i=42;
- prontf(i);
+ prontf("La respuesta es %d\n", i);
 }
 
 
