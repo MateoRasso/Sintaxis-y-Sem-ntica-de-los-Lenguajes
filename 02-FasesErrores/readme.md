@@ -47,7 +47,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * gcc -S hello3.c -o hello3.s
 
-    ´´´
+    ```
 
     hello3.c: In function 'main':
     hello3.c:5:2: warning: implicit declaration of function 'prontf'; did you mean 'printf'? [-Wimplicit-function-declaration]
@@ -56,7 +56,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
       |  printf
     hello3.c:5:2: error: expected declaration or statement at end of input
 
-    ´´´
+    ```
 
     Al compilar hello3.i sin ensamblar el compilador indica que hay un error sintáctico en el codigo, por la falta de una llave, y un warning por la llamada a _prontf_ que no está declarada. 
 
@@ -90,12 +90,12 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * gcc hello4.o 
 
-    ´´´
+    ```
 
     c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: hello4.o:hello4.c:(.text+0x1e): undefined reference to `prontf'
     collect2.exe: error: ld returned 1 exit status
 
-    ´´´
+    ```
 
     En la consola se muestra ese error ya que _prontf_  produce un error de vinculación. _prontf_ es una función que no está definida.
 
@@ -147,7 +147,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * gcc hello7.c -o hello7 
 
-    ´´´
+    ```
 
     hello7.c: In function 'main':
     hello7.c:3:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
@@ -158,7 +158,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
   +++ |+#include <stdio.h>
     1 | int main(void){
 
-    ´´´
+    ```
     
     * .\hello7.exe 
 
@@ -171,7 +171,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     Como ejemplo se incluye en la carpeta 03-FasesErrores el archivo devuelveFloat.c en el que se llama desde _main_ a una funcion que devuelve un valor de tipo de dato float. La funcion no esta declarada, solo esta definida abajo de _main_ . Cuando se ejecuta el comando **gcc devuelveFloat.c -o devuelveFloat** obtenemos el warning correspondiente a la declaración implícita y un error, este último no se obtiene para el caso de hello7.c .
 
-    ´´´
+    ```
 
     devuelveFloat.c:4:6: warning: implicit declaration of function 'devuelvefloat' [-Wimplicit-function-declaration]
     4 |  i = devuelvefloat();
@@ -184,7 +184,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     4 |  i = devuelvefloat();
       |      ^~~~~~~~~~~~~
 
-    ´´´
+    ```
     ----------------------------------------------------------------------------------------------------------------------------
 
 6. Compilación Separada: Contratos y Módulos
@@ -203,20 +203,19 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     * gcc -c hello8.c -o hello8SoloCompilado.o
 
-    ´´´
-
+    ```
     hello8.c: In function 'main':
     hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
     3 |  prontf("La respuesta es %d\n", i);
       |  ^~~~~~
 
-    ´´´
+    ```
 
     Con este comando generamos el archivo objeto stdioSoloCompilado.o, 
 
     * gcc -c studio1.c -o studioSoloCompilado.o 
 
-    ´´´
+    ```
 
     studio1.c: In function 'prontf':
     studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
@@ -227,7 +226,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
-    ´´´
+    ```
 
     Luego enlazamos ambos archivos objeto para generar el ejecutable
 
@@ -254,7 +253,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     * gcc hello8.c studio1.c -o hello8
 
-    ´´´
+    ```
 
     hello8.c: In function 'main':
     hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
@@ -269,7 +268,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
-    ´´´
+    ```
 
     * .\hello8.exe
 
@@ -284,7 +283,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     * gcc hello8.c studio1.c -o hello8  
 
-    ´´´
+    ```
 
     hello8.c: In function 'main':
     hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
@@ -299,7 +298,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
-    ´´´
+    ```
 
     * .\hello.exe  
 
@@ -325,7 +324,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     * gcc hello9.c studio2.c -o hello9
 
-    ´´´
+    ```
 
         hello9.c: In function 'main':
     hello9.c:5:2: error: too few arguments to function 'prontf'
@@ -336,7 +335,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     3 | void prontf(const char*, int);
       |      ^~~~~~
 
-    ´´´
+    ```
 
     El compilador detecta menos argumentos de los especificados en el contrato, y por lo tanto se produce un error.
 
@@ -346,7 +345,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     * gcc hello9.c studio2.c -o hello9
 
-    ´´´
+    ```
 
         studio2.c:3:6: error: conflicting types for 'prontf'
     3 | void prontf(const char* s){
@@ -361,7 +360,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
       |                                 ^
     studio2.c:4:33: note: each undeclared identifier is reported only once for each function it appears in
 
-    ´´´
+    ```
 
     El compilador detecta la definición incorrecta por parte del proveedor. Además indica que _i_ no está declarada debido a que eliminamos el segundo parámetro de la definición de _prontf_.
 
