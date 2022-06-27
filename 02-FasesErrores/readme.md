@@ -178,8 +178,8 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
 
     * gcc -c hello8.c -o hello8SoloCompilado.o
 
-hello8.c: In function 'main':
-hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
+    hello8.c: In function 'main':
+    hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
     3 |  prontf("La respuesta es %d\n", i);
       |  ^~~~~~
 
@@ -188,12 +188,12 @@ hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-fun
     * gcc -c studio1.c -o studioSoloCompilado.o 
 
     studio1.c: In function 'prontf':
-studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+    studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
     2 |  printf("La respuesta es %d\n", i);
       |  ^~~~~~
-studio1.c:2:2: warning: incompatible implicit declaration of built-in function 'printf'
-studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-  +++ |+#include <stdio.h>
+    studio1.c:2:2: warning: incompatible implicit declaration of built-in function 'printf'
+    studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
     Luego enlazamos ambos archivos objeto para generar el ejecutable
@@ -222,16 +222,16 @@ studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
     * gcc hello8.c studio1.c -o hello8
 
     hello8.c: In function 'main':
-hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
+    hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
     3 |  prontf("La respuesta es %d\n", i, 1);
       |  ^~~~~~
-studio1.c: In function 'prontf':
-studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+    studio1.c: In function 'prontf':
+    studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
     2 |  printf("La respuesta es %d\n", i);
       |  ^~~~~~
-studio1.c:2:2: warning: incompatible implicit declaration of built-in function 'printf'
-studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-  +++ |+#include <stdio.h>
+    studio1.c:2:2: warning: incompatible implicit declaration of built-in function 'printf'
+    studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
     * .\hello8.exe
@@ -248,16 +248,16 @@ studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
     * gcc hello8.c studio1.c -o hello8  
 
     hello8.c: In function 'main':
-hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
+    hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
     3 |  prontf("La respuesta es %d\n");
       |  ^~~~~~
-studio1.c: In function 'prontf':
-studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+    studio1.c: In function 'prontf':
+    studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
     2 |  printf("La respuesta es %d\n", i);
       |  ^~~~~~
-studio1.c:2:2: warning: incompatible implicit declaration of built-in function 'printf'
-studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-  +++ |+#include <stdio.h>
+    studio1.c:2:2: warning: incompatible implicit declaration of built-in function 'printf'
+    studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
     * .\hello.exe  
@@ -269,53 +269,53 @@ studio1.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
     d. Revisitar el punto anterior, esta vez utilizando un contrato de interfaz en
     un archivo header.
     
-        i. Escribir el contrato en studio.h.
+    i. Escribir el contrato en studio.h.
 
-        ii. Escribir hello9.c, un cliente que sí incluye el contrato.
+    ii. Escribir hello9.c, un cliente que sí incluye el contrato.
 
-        iv. Responder: ¿Qué ventaja da incluir el contrato en los clientes y en el
+    iv. Responder: ¿Qué ventaja da incluir el contrato en los clientes y en el
         proveedor
 
-        La ventaja que da incluir el contrato en los clientes y en el proveedor es que permite que el compilador detecte errores de invocación Incorrecta por parte del consumidor y de definición Incorrecta por parte del proveedor. Usando la Información que da la declaración de una función, el compilador puede verificar la cantidad de parámetros, argumentos y los tipos de dato de cada uno en las Invocaciones y definiciones de una función. A continuación, podemos realizar la prueba.
+    La ventaja que da incluir el contrato en los clientes y en el proveedor es que permite que el compilador detecte errores de invocación Incorrecta por parte del consumidor y de definición Incorrecta por parte del proveedor. Usando la Información que da la declaración de una función, el compilador puede verificar la cantidad de parámetros, argumentos y los tipos de dato de cada uno en las Invocaciones y definiciones de una función. A continuación, podemos realizar la prueba.
 
-        1. Eliminando el argumento _i_ en la invocación a _prontf_
+    1. Eliminando el argumento _i_ en la invocación a _prontf_
 
-        Comando:
+    Comando:
 
-        * gcc hello9.c studio2.c -o hello9
+    * gcc hello9.c studio2.c -o hello9
 
         hello9.c: In function 'main':
-hello9.c:5:2: error: too few arguments to function 'prontf'
+    hello9.c:5:2: error: too few arguments to function 'prontf'
     5 |  prontf("La respuesta es %d\n");
       |  ^~~~~~
-In file included from hello9.c:1:
-studio.h:3:6: note: declared here
+    In file included from hello9.c:1:
+    studio.h:3:6: note: declared here
     3 | void prontf(const char*, int);
       |      ^~~~~~
 
 
-        El compilador detecta menos argumentos de los especificados en el contrato, y por lo tanto se produce un error.
+    El compilador detecta menos argumentos de los especificados en el contrato, y por lo tanto se produce un error.
 
-        2. Eliminamos el segundo parámetro en la definición de _prontf_ 
+    2. Eliminamos el segundo parámetro en la definición de _prontf_ 
 
-        Comando:
+    Comando:
 
-        * gcc hello9.c studio2.c -o hello9
+    * gcc hello9.c studio2.c -o hello9
 
         studio2.c:3:6: error: conflicting types for 'prontf'
     3 | void prontf(const char* s){
       |      ^~~~~~
-In file included from studio2.c:1:
-studio.h:3:6: note: previous declaration of 'prontf' was here
+    In file included from studio2.c:1:
+    studio.h:3:6: note: previous declaration of 'prontf' was here
     3 | void prontf(const char*, int);
       |      ^~~~~~
-studio2.c: In function 'prontf':
-studio2.c:4:33: error: 'i' undeclared (first use in this function)
+    studio2.c: In function 'prontf':
+    studio2.c:4:33: error: 'i' undeclared (first use in this function)
     4 |  printf("La respuesta es %d\n", i);
       |                                 ^
-studio2.c:4:33: note: each undeclared identifier is reported only once for each function it appears in
+    studio2.c:4:33: note: each undeclared identifier is reported only once for each function it appears in
 
-        El compilador detecta la definición incorrecta por parte del proveedor. Además indica que _i_ no está declarada debido a que eliminamos el segundo parámetro de la definición de _prontf_.
+    El compilador detecta la definición incorrecta por parte del proveedor. Además indica que _i_ no está declarada debido a que eliminamos el segundo parámetro de la definición de _prontf_.
 
 
 
