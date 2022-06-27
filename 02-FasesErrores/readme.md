@@ -155,7 +155,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
       |  ^~~~~~
     hello7.c:3:2: warning: incompatible implicit declaration of built-in function 'printf'
     hello7.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
-  +++ |+#include <stdio.h>
+    +++ |+#include <stdio.h>
     1 | int main(void){
 
     ```
