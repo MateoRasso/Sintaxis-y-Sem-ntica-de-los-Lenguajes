@@ -47,6 +47,17 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * gcc -S hello3.c -o hello3.s
 
+    ´´´
+
+    hello3.c: In function 'main':
+    hello3.c:5:2: warning: implicit declaration of function 'prontf'; did you mean 'printf'? [-Wimplicit-function-declaration]
+    5 |  prontf("La respuesta es %d\n");
+      |  ^~~~~~
+      |  printf
+    hello3.c:5:2: error: expected declaration or statement at end of input
+
+    ´´´
+
     Al compilar hello3.i sin ensamblar el compilador indica que hay un error sintáctico en el codigo, por la falta de una llave, y un warning por la llamada a _prontf_ que no está declarada. 
 
     b. Corregir solo los errores, no los warnings, en el nuevo archivo hello4.c y empezar de nuevo, generar hello4.s, no ensamblar.
@@ -79,10 +90,14 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * gcc hello4.o 
 
-    En la consola se muestra el siguiente error ya que _prontf_  produce un error de vinculación.
+    ´´´
 
     c:/mingw/bin/../lib/gcc/mingw32/9.2.0/../../../../mingw32/bin/ld.exe: hello4.o:hello4.c:(.text+0x1e): undefined reference to `prontf'
     collect2.exe: error: ld returned 1 exit status
+
+    ´´´
+
+    En la consola se muestra ese error ya que _prontf_  produce un error de vinculación. _prontf_ es una función que no está definida.
 
     b. Corregir en hello5.c y generar el ejecutable. Solo corregir lo necesario para que vincule.
 
@@ -100,7 +115,9 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * .\hello5.exe
 
-    Al ejecutar el programa se obtiene por pantalla **'La respuesta es 4200688'** . En el caso de hello5.c la cadena _s_ de _printf_ contiene caracteres ordinarios que son impresos a la salida estandar (**La respuesta es**) y el especificador de conversion _%d_ . Al imprimir por la salida estandar esta cadena, se produce un problema ya que el uso de _%d_ en _printf_ indica que se va a imprimir un entero, pero en _printf_ falta un argumento, es decir, falta agregar la variable _i_ como segundo argumento de _printf_ para que el numero **42** se muestre por pantalla correctamente.
+    se obtiene por pantalla la salida: **'La respuesta es 4200688'** . 
+    
+    En el caso de hello5.c la cadena _s_ de _printf_ contiene caracteres ordinarios que son impresos a la salida estandar (**La respuesta es**) y el especificador de conversion _%d_ . Al imprimir por la salida estandar esta cadena, se produce un problema ya que el uso de _%d_ en _printf_ indica que se va a imprimir un entero, pero en _printf_ falta un argumento, es decir, falta agregar la variable _i_ como segundo argumento de _printf_ para que el numero **42** se muestre por pantalla correctamente.
 
     ----------------------------------------------------------------------------------------------------------------------------
 
@@ -113,6 +130,8 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     * gcc hello6.c -o hello6
     
     * .\hello6.exe
+
+    Se obtiene por pantalla la salida: **'La respuesta es 42'**
 
     Luego de realizar la corrección correspondiente en hello6.c, compilamos y ejecutamos el programa y obtenemos por pantalla la salida correcta **'La respuesta es 42'** .
 
@@ -128,18 +147,22 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
     
     * gcc hello7.c -o hello7 
 
+    ´´´
+
     hello7.c: In function 'main':
-hello7.c:3:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+    hello7.c:3:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
     3 |  printf("La respuesta es %d\n", i);
       |  ^~~~~~
-hello7.c:3:2: warning: incompatible implicit declaration of built-in function 'printf'
-hello7.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
+    hello7.c:3:2: warning: incompatible implicit declaration of built-in function 'printf'
+    hello7.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
   +++ |+#include <stdio.h>
     1 | int main(void){
+
+    ´´´
     
     * .\hello7.exe 
 
-    Salida: **La respuesta es 42**
+    Se obtiene por pantalla la salida: **La respuesta es 42**
 
     Al ejecutar los comandos el programa es compilado y ejecutado con un warning pero sin errores. 
     
@@ -148,18 +171,20 @@ hello7.c:1:1: note: include '<stdio.h>' or provide a declaration of 'printf'
 
     Como ejemplo se incluye en la carpeta 03-FasesErrores el archivo devuelveFloat.c en el que se llama desde _main_ a una funcion que devuelve un valor de tipo de dato float. La funcion no esta declarada, solo esta definida abajo de _main_ . Cuando se ejecuta el comando **gcc devuelveFloat.c -o devuelveFloat** obtenemos el warning correspondiente a la declaración implícita y un error, este último no se obtiene para el caso de hello7.c .
 
+    ´´´
+
     devuelveFloat.c:4:6: warning: implicit declaration of function 'devuelvefloat' [-Wimplicit-function-declaration]
     4 |  i = devuelvefloat();
       |      ^~~~~~~~~~~~~
-devuelveFloat.c: At top level:
-devuelveFloat.c:7:7: error: conflicting types for 'devuelvefloat'
+    devuelveFloat.c: At top level:
+    devuelveFloat.c:7:7: error: conflicting types for 'devuelvefloat'
     7 | float devuelvefloat(){
       |       ^~~~~~~~~~~~~
-devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was here
+    devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was here
     4 |  i = devuelvefloat();
       |      ^~~~~~~~~~~~~
 
-    
+    ´´´
     ----------------------------------------------------------------------------------------------------------------------------
 
 6. Compilación Separada: Contratos y Módulos
@@ -178,14 +203,20 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
 
     * gcc -c hello8.c -o hello8SoloCompilado.o
 
+    ´´´
+
     hello8.c: In function 'main':
     hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
     3 |  prontf("La respuesta es %d\n", i);
       |  ^~~~~~
 
+    ´´´
+
     Con este comando generamos el archivo objeto stdioSoloCompilado.o, 
 
     * gcc -c studio1.c -o studioSoloCompilado.o 
+
+    ´´´
 
     studio1.c: In function 'prontf':
     studio1.c:2:2: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
@@ -196,6 +227,8 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
     +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
+    ´´´
+
     Luego enlazamos ambos archivos objeto para generar el ejecutable
 
     * gcc hello8SoloCompilado.o studioSoloCompilado.o -o hello8
@@ -204,7 +237,7 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
 
     * .\hello8.exe 
 
-    Obtenemos por pantalla la salida: **La respuesta es 42**
+    Se obtiene por pantalla la salida: **La respuesta es 42**
 
     Tambien podemos generar el ejecutable a partir de los archivos fuente, sin compilar a archivos objeto por separado como fue realizado anteriormente. De esta forma se obtiene el mismo ejecutable que compilando a archivos objeto por sepearado y luego enlazandolos. 
 
@@ -221,6 +254,8 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
 
     * gcc hello8.c studio1.c -o hello8
 
+    ´´´
+
     hello8.c: In function 'main':
     hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
     3 |  prontf("La respuesta es %d\n", i, 1);
@@ -234,9 +269,11 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
     +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
+    ´´´
+
     * .\hello8.exe
 
-    Salida: **La respuesta es 42**
+    Se obtiene por pantalla la salida: **La respuesta es 42**
 
     Al agregar un argumento a la invocacion a prontf en hello8.c obtenemos el mismo warning para _prontf_ que en el punto _.b_ 
     Esto sucede ya que al no haber una declaracion para _prontf_ en hello8.c la funcion esta declarada implicitamente, el compilador (gcc) permite declaraciones implicitas y no asume nada respecto a cuáles son los parametros de la función prontf. El compilador genera el ejecutable y nos indica a traves de un _warning_ que no hay una declaración para _prontf_ . La salida que se obtiene por pantalla es la misma que en el punto .b
@@ -246,6 +283,8 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
     Comandos:
 
     * gcc hello8.c studio1.c -o hello8  
+
+    ´´´
 
     hello8.c: In function 'main':
     hello8.c:3:2: warning: implicit declaration of function 'prontf' [-Wimplicit-function-declaration]
@@ -260,9 +299,11 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
     +++ |+#include <stdio.h>
     1 | void prontf(const char* s, int i){
 
+    ´´´
+
     * .\hello.exe  
 
-    Obtenemos por pantalla la salida: **La respuesta es 4200720**
+    Se obtiene por pantalla la salida: **La respuesta es 4200720**
 
     Al eliminar un argumento, la salida que obtenemos por pantalla es distinta a la del punto _.b_, pero el _warning_ que se obtiene para prontf es el mismo. Esto sucede ya que como se mencionó anteriormente, gcc permite declaraciones implícitas y no asume nada sobre los parametros de una función declarada implícitamente, ni sobre los tipos de dato de esos parámetros. Al no haber una declaración de la función, el compilador no verifica los tipos de dato ni la cantidad de parametros de la definición de la función o de la invocación. Si eliminamos el argumento _i_ , La salida que se obtiene por pantalla es distinta a la del punto .b ya que en la definición de _prontf_ se invoca a _printf_ con _i_ como argumento y como no le pasamos ese parametro a _prontf_, _printf_ imprime un valor basura.
 
@@ -278,11 +319,13 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
 
     La ventaja que da incluir el contrato en los clientes y en el proveedor es que permite que el compilador detecte errores de invocación Incorrecta por parte del consumidor y de definición Incorrecta por parte del proveedor. Usando la Información que da la declaración de una función, el compilador puede verificar la cantidad de parámetros, argumentos y los tipos de dato de cada uno en las Invocaciones y definiciones de una función. A continuación, podemos realizar la prueba.
 
-    1. Eliminando el argumento _i_ en la invocación a _prontf_
+    **1. Eliminando el argumento _i_ en la invocación a _prontf_**
 
     Comando:
 
     * gcc hello9.c studio2.c -o hello9
+
+    ´´´
 
         hello9.c: In function 'main':
     hello9.c:5:2: error: too few arguments to function 'prontf'
@@ -293,14 +336,17 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
     3 | void prontf(const char*, int);
       |      ^~~~~~
 
+    ´´´
 
     El compilador detecta menos argumentos de los especificados en el contrato, y por lo tanto se produce un error.
 
-    2. Eliminamos el segundo parámetro en la definición de _prontf_ 
+    **2. Eliminamos el segundo parámetro en la definición de _prontf_** 
 
     Comando:
 
     * gcc hello9.c studio2.c -o hello9
+
+    ´´´
 
         studio2.c:3:6: error: conflicting types for 'prontf'
     3 | void prontf(const char* s){
@@ -314,6 +360,8 @@ devuelveFloat.c:4:6: note: previous implicit declaration of 'devuelvefloat' was 
     4 |  printf("La respuesta es %d\n", i);
       |                                 ^
     studio2.c:4:33: note: each undeclared identifier is reported only once for each function it appears in
+
+    ´´´
 
     El compilador detecta la definición incorrecta por parte del proveedor. Además indica que _i_ no está declarada debido a que eliminamos el segundo parámetro de la definición de _prontf_.
 
