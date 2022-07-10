@@ -240,7 +240,7 @@ Este trabajo tiene como objetivo identificar las fases del proceso de traducció
 
     Se obtiene por pantalla la salida: **La respuesta es 42**
 
-    Tambien podemos generar el ejecutable a partir de los archivos fuente, sin compilar a archivos objeto por separado como fue realizado anteriormente. De esta forma se obtiene el mismo ejecutable que compilando a archivos objeto por sepearado y luego enlazandolos. 
+    Tambien podemos generar el ejecutable a partir de los archivos fuente, pero con un solo comando. De esta forma se obtiene el mismo ejecutable que compilando a archivos objeto y luego enlazandolos. 
 
     * gcc hello8.c studio1.c -o hello8
 
